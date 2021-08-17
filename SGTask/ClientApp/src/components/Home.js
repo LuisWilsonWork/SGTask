@@ -18,7 +18,8 @@ export class Home extends Component {
     }
 
     async GetAgePrediction() {
-        const response = await fetch('ageprediction');
+        let inputProperty = document.getElementById("nameInput")
+        const response = await fetch('ageprediction/' + inputProperty.value);
         const data = await response.json();
         alert("Predicted age for " + data.name + " is : " + data.age);
     }

@@ -13,7 +13,7 @@ namespace SGTask.Controllers
     [Route("[controller]")]
     public class AgePredictionController : ControllerBase
     {
-        
+
 
         private readonly ILogger<AgePredictionController> _logger;
 
@@ -22,19 +22,19 @@ namespace SGTask.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
-        public AgePrediction Get()
+        [HttpGet ("{name}")]
+        public AgePrediction Get(string name)
         {
-            return new AgePrediction
-            {
-                Name = "Luis",
-                Age = 26
-                
-            };
+            var client = new RestClient("https://api.agify.io/");
 
+            var request = new RestRequest("?name=" + name, Method.GET);
+            
+            RestResponse response = (RestResponse)client.Execute(request);
 
+            JsonDeserializer deserial = new JsonDeserializer();
 
-
+            AgePrediction prediction = deserial.Deserialize<AgePrediction>(response);
+            return prediction;
         }
     }
 }
