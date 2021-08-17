@@ -8,11 +8,16 @@ export class Home extends Component {
       <div>
             <h1>Age predictions based on a name!</h1>
             <br/>
-            <label>Input a name below</label>
+            <label>Input a single name below</label>
             <br/>
             <input id="nameInput"></input>
             <button onClick={() => { this.GetAgePrediction() }} >Get Age Prediction</button>
-        
+            <br />
+            <br />
+            <label>Input Multiple names below seperated by a ','</label>
+            <br />
+            <input id="nameInput"></input>
+            <button onClick={() => { this.GetAgePrediction() }} >Get Age Prediction</button>
       </div>
     );
     }
