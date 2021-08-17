@@ -37,7 +37,15 @@ export class Home extends Component {
         let inputProperty = document.getElementById("multiInput")
         const response = await fetch('multiageprediction/' + inputProperty.value);
         const data = await response.json();
-        alert("Predicted age for " + data.name + " is : " + data.age);
+        let outputText = "";
+
+        
+
+        for (var i = 0; i < data.predictions.length; i++) {
+            outputText += "Predicted age for " + data.predictions[i].name + " is : " + data.predictions[i].age + "\r\n";
+            
+        }
+        alert(outputText);
     }
 
     

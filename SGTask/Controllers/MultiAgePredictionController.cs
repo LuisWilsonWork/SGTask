@@ -59,6 +59,8 @@ namespace SGTask.Controllers
             }
 
             MultiAgePrediction prediction = new MultiAgePrediction();
+            prediction.Predictions = predictionList;
+
 
 
 
